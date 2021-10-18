@@ -5,7 +5,7 @@ const Information = (props) => {
     const { name, company, picture, balance, description, Instructor } = props.people;
 
     return (
-        <div className="col">
+        <div className="col col-sm-3 col-md-6">
             <div className="card text-center">
                 <img src={picture} className="card-img-top img-thumbnail rounded mx-auto d-block mx-auto" alt="..." />
                 <div className="card-body">

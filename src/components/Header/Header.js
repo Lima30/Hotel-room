@@ -8,7 +8,7 @@ const Header = () => {
     return (
 
         <nav className="header bg-primary text-center text-white mx-auto">
-            <h2>Welcome to Lima's Dental Clinic</h2>
+            <h1>Welcome to Happy Dental</h1>
             <Link className="text-white font-weight-bold" to="/Home">Home</Link>
             <br />
 

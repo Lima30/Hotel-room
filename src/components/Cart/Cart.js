@@ -15,7 +15,7 @@ const Cart = (props) => {
             <h3>Total Treatment added: {cart.length}</h3>
             <h4>Total Cost:${total}</h4>
             {/* <button className="btn btn-info">Book Today</button> */}
-            <button> <Link to="/placeorder">Book Today</Link></button>
+            <button className="btn btn-primary btn-sm btn btn-info text-dark"> <Link to="/placeorder">Book Today</Link></button>
         </div>
     );
 };

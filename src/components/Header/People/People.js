@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Cart from '../../Cart/Cart';
-import Information from '../../Information/Information';
+// import Cart from '../../Cart/Cart';
+// import Information from '../../Information/Information';
+import Information2 from '../../Information2/Information2';
 
 const People = () => {
     const [people, setPeople] = useState([]);
@@ -23,19 +24,19 @@ const People = () => {
         <div>
             <div className="row row-cols-1 row-cols-md-3 g-4">
                 {
-                    people.map(people => <Information
+                    people.map(people => <Information2
                         key={people.email}
                         people={people}
                         handleAddToCart={handleAddToCart}
 
                     >
-                    </Information>)
+                    </Information2>)
                 }
 
             </div>
-            <div>
+            {/* <div>
                 <Cart cart={cart} ></Cart>
-            </div>
+            </div> */}
 
         </div>
     );

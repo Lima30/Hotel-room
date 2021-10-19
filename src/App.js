@@ -14,46 +14,57 @@ import NotFound from './components/NotFound/NotFound';
 import Services from './components/Services/Services';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
+import AuthProvider from './context/AuthProvider';
+import PlaceOrder from './components/PlaceOrder/PlaceOrder';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+// import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+// import AuthProvider from './context/AuthProvider';
 
 function App() {
   return (
     <div >
+      <AuthProvider>
+        <Router>
+          <Header></Header>
 
-      <Router>
-        <Header></Header>
+          <Switch>
+            <Route path="/Home">
+              <Home></Home>
+            </Route>
+            <Route path="/About">
+              <About></About>
+            </Route>
+            <Route path="/Services">
+              <Services></Services>
+            </Route>
+            <Route path="/Contact">
+              <Contact></Contact>
+            </Route>
 
-        <Switch>
-          <Route path="/Home">
-            <Home></Home>
-          </Route>
-          <Route path="/About">
-            <About></About>
-          </Route>
-          <Route path="/Services">
-            <Services></Services>
-          </Route>
-          <Route path="/Contact">
-            <Contact></Contact>
-          </Route>
+            <Route path="/Login">
+              <Login></Login>
+            </Route>
 
-          <Route path="/Login">
-            <Login></Login>
-          </Route>
+            <Route path="/Register">
+              <Register></Register>
+            </Route>
+            <PrivateRoute path="/Placeorder">
+              <PlaceOrder></PlaceOrder>
+            </PrivateRoute>
 
-          <Route path="/Register">
-            <Register></Register>
-          </Route>
 
-          <Route exact path="/">
-            <Home></Home>
-          </Route>
-          <Route path="*">
-            <NotFound></NotFound>
-          </Route>
+            <Route exact path="/">
+              <Home></Home>
+            </Route>
+            <Route path="*">
+              <NotFound></NotFound>
+            </Route>
 
-        </Switch>
+          </Switch>
 
-      </Router>
+        </Router>
+      </AuthProvider>
+
 
 
       <div>

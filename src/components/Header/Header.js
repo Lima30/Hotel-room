@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useFirebase from '../../useFirebase/useFirebase';
+import useAuth from '../../Firebase/useAuth';
+// import useFirebase from '../../useFirebase/useFirebase';
 
 const Header = () => {
-    const { user, logOut } = useFirebase();
+    const { user, logOut } = useAuth();
     return (
 
         <nav className="header bg-primary text-center text-white mx-auto">
@@ -20,6 +21,8 @@ const Header = () => {
             <br />
 
             <Link className="text-white " to="/Contact">Contact</Link>
+
+            {user.email && <span> Hello {user.displayName}</span>}
 
             <br />
             {

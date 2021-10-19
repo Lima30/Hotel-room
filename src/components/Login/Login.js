@@ -1,9 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import useFirebase from '../../useFirebase/useFirebase';
+import { Link, useLocation, useHistory } from 'react-router-dom';
+import useAuth from '../../Firebase/useAuth';
+// import useFirebase from '../../useFirebase/useFirebase';
 
 const Login = () => {
-    const { user, signInUsingGoogle } = useFirebase();
+    const { signInUsingGoogle } = useAuth();
+    const location = useLocation();
+    const history = useHistory();
+    const redirect_uri = location.state?.from || '/';
+    console.log('came from', location.state?.from);
+
+    const handleGoogleLogin = () => {
+        signInUsingGoogle()
+            .then(result => {
+                history.push(redirect_uri);
+            })
+    }
 
     return (
         <div>
@@ -14,10 +26,10 @@ const Login = () => {
                     <input type="email" name="" id="" placeholder="Your Email" />
                     <br />
                     <br />
-                    <input type="email" name="" id="" placeholder="Your Password" />
+                    <input type="password" name="" id="" placeholder="Your Password" />
                     <br />
                     <br />
-                    <input type="submit" value="Submit" />
+                    <input type="submit" value="Login" />
                 </form>
             </div>
             <br />
@@ -26,7 +38,7 @@ const Login = () => {
             <div className="d-flex justify-content-center">
                 <button type="button"
                     className="btn btn-secondary btn-sm text-center"
-                    onClick={signInUsingGoogle}
+                    onClick={handleGoogleLogin}
                 >Google Sign in </button>
 
 

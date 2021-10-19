@@ -1,27 +1,57 @@
-import React from 'react';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import initializeAuthentication from '../../Firebase/firebase.init';
 
+
+initializeAuthentication();
 const Register = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+    const auth = getAuth();
+
+    const handleNameChange = e => {
+        setName(e.target.value);
+    }
+
+    const handleEmailChange = e => {
+        setEmail(e.target.value);
+    }
+
+    const handlePasswordChange = e => {
+        setPassword(e.target.value);
+    }
+
+    const handleRegistration = e => {
+        console.log(name, email, password);
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+        e.preventDefault();
+    }
     return (
         <div>
             <div>
                 <h2 className="text-center">Create New Account</h2>
                 <div className="d-flex justify-content-center">
-                    <form onSubmit="">
-                        <input type="name" name="" id="" placeholder="Your Name" />
+                    <form onSubmit={handleRegistration}>
+                        <input onBlur={handleNameChange} type="name" name="" id="" placeholder="Your Name" />
                         <br />
                         <br />
 
-                        <input type="email" name="" id="" placeholder="Your Email" />
+                        <input onBlur={handleEmailChange} type="email" name="" id="" placeholder="Your Email" required />
                         <br />
                         <br />
-                        <input type="password" name="" id="" placeholder="Your Password" />
+                        <input onBlur={handlePasswordChange} type="password" name="" id="" placeholder="Your Password" required />
                         <br />
                         <br />
-                        <input type="password" name="" id="" placeholder="Re-enter Your Password" />
+                        <input onBlur={handlePasswordChange} type="password" name="" id="" placeholder="Re-enter Your Password" required />
                         <br />
                         <br />
-                        <input type="submit" value="Submit" />
+                        <input type="submit" value="Register" />
                     </form>
                 </div>
                 <br />

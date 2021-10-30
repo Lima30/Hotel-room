@@ -10,7 +10,7 @@ const People = () => {
 
 
     useEffect(() => {
-        fetch('./people.JSON')
+        fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => setPeople(data));
 

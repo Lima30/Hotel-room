@@ -17,6 +17,7 @@ import Register from './components/Register/Register';
 import AuthProvider from './context/AuthProvider';
 import PlaceOrder from './components/PlaceOrder/PlaceOrder';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Details from './components/Details/Details';
 // import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 // import AuthProvider from './context/AuthProvider';
 
@@ -37,6 +38,10 @@ function App() {
             <Route path="/Services">
               <Services></Services>
             </Route>
+            <Route path="/Details/:id">
+              <Details></Details>
+            </Route>
+
             <Route path="/Contact">
               <Contact></Contact>
             </Route>
@@ -48,6 +53,7 @@ function App() {
             <Route path="/Register">
               <Register></Register>
             </Route>
+
             <PrivateRoute path="/Placeorder">
               <PlaceOrder></PlaceOrder>
             </PrivateRoute>
@@ -56,9 +62,9 @@ function App() {
             <Route exact path="/">
               <Home></Home>
             </Route>
-            <Route path="*">
+            {/* <Route path="*">
               <NotFound></NotFound>
-            </Route>
+            </Route> */}
 
           </Switch>
 
